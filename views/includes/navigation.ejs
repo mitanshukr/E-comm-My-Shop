@@ -1,0 +1,55 @@
+<div class="backdrop"></div>
+<header class="main-header">
+    <button id="side-menu-toggle">Menu</button>
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <li class="main-header__item"><a class="<%= pageTitle.includes('My Shop') ? 'active' : '' %>" href="/">Home</a></li>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Products') ? 'active' : '' %>" href="/products">Products</a></li>
+            <% if(isAuthenticated) { %>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Cart') ? 'active' : '' %>" href="/cart">Cart</a></li>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Your Orders') ? 'active' : '' %>" href="/orders">Your Orders</a></li>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Add Product') ? 'active' : '' %>" href="/admin/add-product">Add Product</a></li>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Admin - Product') ? 'active' : '' %>" href="/admin/products">Admin Products</a></li>
+            <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+            <% if(!isAuthenticated) { %>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Login') ? 'active' : '' %>" href="/login">Login</a></li>
+            <li class="main-header__item"><a class="<%= pageTitle.includes('Signup') ? 'active' : '' %>" href="/signup">Signup</a></li>
+            <%} else{ %>
+            <li class="main-header__item">
+                <form action="/logout" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('My Shop') ? 'active' : '' %>" href="/">Home</a></li>
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Products') ? 'active' : '' %>" href="/products">Products</a></li>
+        <% if(isAuthenticated) { %>
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Cart') ? 'active' : '' %>" href="/cart">Cart</a></li>
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Your Orders') ? 'active' : '' %>" href="/orders">Your Orders</a></li>
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Add Product') ? 'active' : '' %>" href="/admin/add-product">Add Product</a></li>
+        <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Admin - Product') ? 'active' : '' %>" href="/admin/products">Admin Products</a></li>
+        <% } %>
+        <% if (!isAuthenticated) { %>
+            <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Login') ? 'active' : '' %>" href="/login">Login</a></li>
+            <li class="mobile-nav__item"><a class="<%= pageTitle.includes('Signup') ? 'active' : '' %>" href="/signup">Signup</a></li>
+        <% } else { %>
+            <li class="mobile-nav__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</nav>
+
+</header>

@@ -15,7 +15,7 @@ const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 const errorControl = require('./controllers/errorControl');
 
-const MONGODB_URI = "mongodb+srv://mitanshu:Mitanshu123@cluster0.i2j6g.mongodb.net/node-shop-mongoose?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb+srv://username:password@cluster0.i2j6g.mongodb.net/************?retryWrites=true&w=majority";
 
 const app = express();
 const csrfProtection = csrf();
